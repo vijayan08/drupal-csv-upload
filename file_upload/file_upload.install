@@ -1,0 +1,40 @@
+<?php
+
+
+
+/**
+ * hook_schema()
+ */
+function file_upload_schema() {
+
+  $schema['file_upload'] = array(
+    'description' => 'Store developers',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique developer ID.',
+      ),
+      'firstname' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'First Name of the developer.',
+      ),
+      'lastname' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Last Name of the developer.',
+      ),
+    ),
+    'primary key' => array('uid'),
+    'indexes' => array(
+      'firstname' => array('firstname'),
+      'lastname' => array('lastname'),
+    ),
+  );
+  return $schema;
+}
